@@ -1,0 +1,157 @@
+<html>
+    <head>
+        <title>Display</title>
+        <style>
+.screen {
+    width: 240;
+    height: 240;
+    margin: 100px auto;
+    background-color: black;
+    color: white;
+    font: 14px "Segoe UI";
+}
+
+.bar {
+    display: flex;
+    height: 32px;
+    line-height: 28px;
+    background-color: #333;
+    color: #999;
+    margin-bottom: 8px;
+    font-size: 16px;
+    overflow: hidden;
+}
+.bar>.spacer {
+    flex: 1;
+}
+.bar>div {
+    margin-top: 3px;
+    margin-left: 6px;
+    margin-right: 6px;
+}
+.bar>.efficiency-title {
+    flex: 1;
+    text-align: center;
+    color: #FFAB91;
+}
+.red {
+    color: #EF5350;
+}
+.button {
+    display: inline-block;
+    box-sizing: border-box;
+    height: 26px;
+    line-height: 26px;
+    padding: 0 6px;
+    border-radius: 5px;
+    background-color: #80CBC4;
+    color: #000;
+}
+
+.channel {
+    margin-bottom: 12px;
+}
+.channel .title {
+    text-align: center;
+    color: #999;
+}
+.measurements {
+    display: flex;
+    margin-top: 4px;
+    font-size: 22px;
+}
+.measurements>.sep {
+    border-right: 1px solid rgba(255, 255, 255, .2);
+}
+.unit {
+    font-size: 0.6em;
+}
+.voltage, .current, .power {
+    flex: 1;
+    text-align: center;
+}
+.voltage {
+    color: #a5d6a7
+}
+.current {
+    color: #90caf9
+}
+.power {
+    color: #fff59d
+}
+.voltage.disabled, .current.disabled, .power.disabled {
+    color: #777;
+}
+.efficiency {
+    text-align: center;
+    font-size: 32px;
+    color: #FFAB91;
+}
+
+        </style>
+    </head>
+    <body style="background-color: darkgray;">
+        <div class="screen">
+            <div class="bar">
+                <div class="button">M</div>
+                <div class="spacer"></div>
+                <div class="battery">3.58<span class="unit"> V</span></div>
+            </div>
+            <div class="channel">
+                <div class="title">CHANNEL 1</div>
+                <div class="measurements">
+                    <div class="voltage">12.23<span class="unit"> V</span></div>
+                    <div class="current">8.12<span class="unit"> A</span></div>
+                    <div class="power">96.52<span class="unit"> W</span></div>
+                </div>
+            </div>
+
+            <div class="channel">
+                <div class="title">CHANNEL 2</div>
+                <div class="measurements">
+                    <div class="voltage">5.03<span class="unit"> V</span></div>
+                    <div class="current">223<span class="unit"> mA</span></div>
+                    <div class="power">1.12<span class="unit"> W</span></div>
+                </div>
+            </div>
+
+            <div class="channel">
+                <div class="title">CHANNEL 3</div>
+                <div class="measurements">
+                    <div class="voltage disabled">–</div>
+                    <div class="current disabled">–</div>
+                    <div class="power disabled">–</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="screen">
+            <div class="bar">
+                <div class="button">M</div>
+                <div class="efficiency-title">Efficiency</div>
+                <div class="battery red">3.05<span class="unit"> V</span></div>
+            </div>
+            <div class="channel">
+                <div class="title">CHANNEL 1</div>
+                <div class="measurements">
+                    <div class="voltage">12.23<span class="unit"> V</span></div>
+                    <div class="current">124<span class="unit"> mA</span></div>
+                    <div class="power">1.52<span class="unit"> W</span></div>
+                </div>
+            </div>
+
+            <div class="channel">
+                <div class="title">CHANNEL 2</div>
+                <div class="measurements">
+                    <div class="voltage">5.03<span class="unit"> V</span></div>
+                    <div class="current">223<span class="unit"> mA</span></div>
+                    <div class="power">1.12<span class="unit"> W</span></div>
+                </div>
+            </div>
+
+            <div class="efficiency">
+                87.2 <span class="unit">%</span>
+            </div>
+        </div>
+    </body>
+</html>

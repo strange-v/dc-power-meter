@@ -7,6 +7,6 @@
 
 extern LGFX lcd;
 
-void IRAM_ATTR flush_pixels(lv_disp_drv_t* disp, const lv_area_t* area, lv_color_t* color_p);
+void IRAM_ATTR flush_pixels(lv_disp_drv_t *disp, const lv_area_t *area, lv_color_t *color_p);
 
-#endif //DISPLAY_DRIVER_H
+#endif

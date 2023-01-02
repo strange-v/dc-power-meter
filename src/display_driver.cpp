@@ -9,9 +9,9 @@ void IRAM_ATTR flush_pixels(lv_disp_drv_t *disp, const lv_area_t *area, lv_color
 
     lcd.startWrite();                            /* Start new TFT transaction */
     lcd.setAddrWindow(area->x1, area->y1, w, h); /* set the working window */
-    //lcd.writePixels((uint16_t *)color_p, len);   /* Write words at once */
+    // lcd.writePixels((uint16_t *)color_p, len);   /* Write words at once */
     lcd.writePixels((uint16_t *)&color_p->full, len, true);
-    lcd.endWrite();                              /* terminate TFT transaction */
+    lcd.endWrite(); /* terminate TFT transaction */
 
     lv_disp_flush_ready(disp);
 }

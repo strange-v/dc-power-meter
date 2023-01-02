@@ -48,7 +48,7 @@ public:
       cfg.dummy_read_pixel = 8;       // Number of dummy read bits before pixel read
       cfg.dummy_read_bits = 1;        // bits of dummy read before reading data other than pixels
       cfg.readable = false;           // true if data can be read
-      cfg.invert = TFT_INVERT_COLORS;     // true if the light and darkness of the panel is reversed
+      cfg.invert = 1;     // true if the light and darkness of the panel is reversed
       cfg.rgb_order = false;          // true if the red and blue of the panel are swapped
       cfg.dlen_16bit = false;         // true for panels that send data length in 16-bit units
       cfg.bus_shared = false;          // true if the bus is shared with the SD card
