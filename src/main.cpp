@@ -38,7 +38,7 @@ void my_print(const char *buf)
 #endif
 
 lv_disp_t *indev_disp;
-lv_group_t *g;
+lv_group_t *group;
 
 void setup(void)
 {
@@ -83,12 +83,12 @@ void setup(void)
   indev_drv.read_cb = encoder_read;
   lv_indev_t *indev_enc = lv_indev_drv_register(&indev_drv);
 
-  g = lv_group_create();
-  lv_indev_set_group(indev_enc, g);
+  group = lv_group_create();
+  lv_indev_set_group(indev_enc, group);
 
   ui_init();
 
-  lv_group_add_obj(g, ui_cbMode);
+  lv_group_add_obj(group, ui_cbMode);
 
   xTaskCreatePinnedToCore(taskRetrieveData, "data", TaskStack15K, NULL, Priority5, NULL, Core1);
   xTaskCreatePinnedToCore(taskUpdateDisplay, "disp", TaskStack15K, NULL, Priority4, NULL, Core1);

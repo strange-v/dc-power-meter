@@ -1,5 +1,10 @@
 {
     "files.associations": {
-        "vector": "cpp"
+        "vector": "cpp",
+        "*.tcc": "cpp",
+        "optional": "cpp",
+        "functional": "cpp",
+        "iosfwd": "cpp",
+        "stdexcept": "cpp"
     }
 }

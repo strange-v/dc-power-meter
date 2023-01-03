@@ -55,6 +55,8 @@ void ui_Screen1_screen_init(void)
     lv_dropdown_set_options(ui_cbMode, "STD\nEFC");
     lv_obj_set_width(ui_cbMode, 60);
     lv_obj_set_height(ui_cbMode, 26);
+    lv_obj_set_x(ui_cbMode, 0);
+    lv_obj_set_y(ui_cbMode, 1);
     lv_obj_add_flag(ui_cbMode, LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
     lv_obj_set_style_text_color(ui_cbMode, lv_color_hex(0x000000), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_cbMode, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -71,6 +73,8 @@ void ui_Screen1_screen_init(void)
     ui_Screen1_Panel1 = lv_obj_create(ui_TopBar);
     lv_obj_set_height(ui_Screen1_Panel1, 26);
     lv_obj_set_width(ui_Screen1_Panel1, LV_SIZE_CONTENT);   /// 100
+    lv_obj_set_x(ui_Screen1_Panel1, 0);
+    lv_obj_set_y(ui_Screen1_Panel1, 1);
     lv_obj_set_align(ui_Screen1_Panel1, LV_ALIGN_TOP_RIGHT);
     lv_obj_clear_flag(ui_Screen1_Panel1, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
     lv_obj_set_style_border_width(ui_Screen1_Panel1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -107,11 +111,47 @@ void ui_Screen1_screen_init(void)
 
     lv_label_set_text(ui_comp_get_child(ui_Channel1, UI_COMP_CH_TITLE), "CHANNEL 1");
 
+    lv_obj_add_state(ui_comp_get_child(ui_Channel1, UI_COMP_CH_VOLTAGE), LV_STATE_DISABLED);       /// States
+
+    lv_label_set_text(ui_comp_get_child(ui_Channel1, UI_COMP_CH_VOLTAGEVALUE), "--");
+
+    lv_obj_add_flag(ui_comp_get_child(ui_Channel1, UI_COMP_CH_VOLTAGEUNIT), LV_OBJ_FLAG_HIDDEN);     /// Flags
+
+    lv_obj_add_state(ui_comp_get_child(ui_Channel1, UI_COMP_CH_CURRENT), LV_STATE_DISABLED);       /// States
+
+    lv_label_set_text(ui_comp_get_child(ui_Channel1, UI_COMP_CH_CURRENTVALUE), "--");
+
+    lv_obj_add_flag(ui_comp_get_child(ui_Channel1, UI_COMP_CH_CURRENTUNIT), LV_OBJ_FLAG_HIDDEN);     /// Flags
+
+    lv_obj_add_state(ui_comp_get_child(ui_Channel1, UI_COMP_CH_POWER), LV_STATE_DISABLED);       /// States
+
+    lv_label_set_text(ui_comp_get_child(ui_Channel1, UI_COMP_CH_POWERVALUE), "--");
+
+    lv_obj_add_flag(ui_comp_get_child(ui_Channel1, UI_COMP_CH_POWERUNIT), LV_OBJ_FLAG_HIDDEN);     /// Flags
+
     ui_Channel2 = ui_CH_create(ui_Screen1);
     lv_obj_set_x(ui_Channel2, 0);
     lv_obj_set_y(ui_Channel2, 110);
 
     lv_label_set_text(ui_comp_get_child(ui_Channel2, UI_COMP_CH_TITLE), "CHANNEL 2");
+
+    lv_obj_add_state(ui_comp_get_child(ui_Channel2, UI_COMP_CH_VOLTAGE), LV_STATE_DISABLED);       /// States
+
+    lv_label_set_text(ui_comp_get_child(ui_Channel2, UI_COMP_CH_VOLTAGEVALUE), "--");
+
+    lv_obj_add_flag(ui_comp_get_child(ui_Channel2, UI_COMP_CH_VOLTAGEUNIT), LV_OBJ_FLAG_HIDDEN);     /// Flags
+
+    lv_obj_add_state(ui_comp_get_child(ui_Channel2, UI_COMP_CH_CURRENT), LV_STATE_DISABLED);       /// States
+
+    lv_label_set_text(ui_comp_get_child(ui_Channel2, UI_COMP_CH_CURRENTVALUE), "--");
+
+    lv_obj_add_flag(ui_comp_get_child(ui_Channel2, UI_COMP_CH_CURRENTUNIT), LV_OBJ_FLAG_HIDDEN);     /// Flags
+
+    lv_obj_add_state(ui_comp_get_child(ui_Channel2, UI_COMP_CH_POWER), LV_STATE_DISABLED);       /// States
+
+    lv_label_set_text(ui_comp_get_child(ui_Channel2, UI_COMP_CH_POWERVALUE), "--");
+
+    lv_obj_add_flag(ui_comp_get_child(ui_Channel2, UI_COMP_CH_POWERUNIT), LV_OBJ_FLAG_HIDDEN);     /// Flags
 
     ui_Channel3 = ui_CH_create(ui_Screen1);
     lv_obj_set_x(ui_Channel3, 0);
@@ -119,6 +159,24 @@ void ui_Screen1_screen_init(void)
     lv_obj_clear_flag(ui_Channel3, LV_OBJ_FLAG_HIDDEN);      /// Flags
 
     lv_label_set_text(ui_comp_get_child(ui_Channel3, UI_COMP_CH_TITLE), "CHANNEL 3");
+
+    lv_obj_add_state(ui_comp_get_child(ui_Channel3, UI_COMP_CH_VOLTAGE), LV_STATE_DISABLED);       /// States
+
+    lv_label_set_text(ui_comp_get_child(ui_Channel3, UI_COMP_CH_VOLTAGEVALUE), "--");
+
+    lv_obj_add_flag(ui_comp_get_child(ui_Channel3, UI_COMP_CH_VOLTAGEUNIT), LV_OBJ_FLAG_HIDDEN);     /// Flags
+
+    lv_obj_add_state(ui_comp_get_child(ui_Channel3, UI_COMP_CH_CURRENT), LV_STATE_DISABLED);       /// States
+
+    lv_label_set_text(ui_comp_get_child(ui_Channel3, UI_COMP_CH_CURRENTVALUE), "--");
+
+    lv_obj_add_flag(ui_comp_get_child(ui_Channel3, UI_COMP_CH_CURRENTUNIT), LV_OBJ_FLAG_HIDDEN);     /// Flags
+
+    lv_obj_add_state(ui_comp_get_child(ui_Channel3, UI_COMP_CH_POWER), LV_STATE_DISABLED);       /// States
+
+    lv_label_set_text(ui_comp_get_child(ui_Channel3, UI_COMP_CH_POWERVALUE), "--");
+
+    lv_obj_add_flag(ui_comp_get_child(ui_Channel3, UI_COMP_CH_POWERUNIT), LV_OBJ_FLAG_HIDDEN);     /// Flags
 
     ui_Efficiency = lv_obj_create(ui_Screen1);
     lv_obj_set_height(ui_Efficiency, 60);
