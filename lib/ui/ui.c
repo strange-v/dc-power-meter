@@ -10,6 +10,7 @@
 ///////////////////// VARIABLES ////////////////////
 lv_obj_t * ui_Screen1;
 lv_obj_t * ui_TopBar;
+void ui_event_cbMode(lv_event_t * e);
 lv_obj_t * ui_cbMode;
 lv_obj_t * ui_Screen1_Panel1;
 lv_obj_t * ui_lblBattery;
@@ -33,6 +34,14 @@ lv_obj_t * ui_Screen1_Label1;
 ///////////////////// ANIMATIONS ////////////////////
 
 ///////////////////// FUNCTIONS ////////////////////
+void ui_event_cbMode(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+    lv_obj_t * target = lv_event_get_target(e);
+    if(event_code == LV_EVENT_VALUE_CHANGED) {
+        onModeChange(e);
+    }
+}
 
 ///////////////////// SCREENS ////////////////////
 void ui_Screen1_screen_init(void)
@@ -198,7 +207,7 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_width(ui_EfficiencyValue, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_EfficiencyValue, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_align(ui_EfficiencyValue, LV_ALIGN_TOP_MID);
-    lv_label_set_text(ui_EfficiencyValue, "87.2");
+    lv_label_set_text(ui_EfficiencyValue, "--");
     lv_obj_set_style_text_color(ui_EfficiencyValue, lv_color_hex(0xFFAB91), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_EfficiencyValue, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_EfficiencyValue, &lv_font_montserrat_32, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -225,6 +234,8 @@ void ui_Screen1_screen_init(void)
     lv_label_set_text(ui_Screen1_Label1, "Efficiency");
     lv_obj_set_style_text_color(ui_Screen1_Label1, lv_color_hex(0xFFAB91), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_Screen1_Label1, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    lv_obj_add_event_cb(ui_cbMode, ui_event_cbMode, LV_EVENT_ALL, NULL);
 
 }
 

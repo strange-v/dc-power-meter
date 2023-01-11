@@ -24,6 +24,7 @@ extern "C" {
 
 extern lv_obj_t * ui_Screen1;
 extern lv_obj_t * ui_TopBar;
+void ui_event_cbMode(lv_event_t * e);
 extern lv_obj_t * ui_cbMode;
 extern lv_obj_t * ui_Screen1_Panel1;
 extern lv_obj_t * ui_lblBattery;
@@ -36,6 +37,7 @@ extern lv_obj_t * ui_EfficiencyValue;
 extern lv_obj_t * ui_Screen1_Label6;
 extern lv_obj_t * ui_Screen1_Label1;
 
+void onModeChange(lv_event_t * e);
 
 LV_IMG_DECLARE(ui_img_1632472841);    // assets\flash-gray-24.png
 

@@ -13,14 +13,12 @@ extern "C"
 #include <sensor.h>
 
 extern EventGroupHandle_t eg;
-extern lv_obj_t * ui_lblBattery;
-extern lv_obj_t * ui_Channel1;
-extern lv_obj_t * ui_Channel2;
-extern lv_obj_t * ui_Channel3;
 
 extern SensorData sensorData;
+extern DeviceMode deviceMode;
 
 void taskUpdateDisplay(void *pvParameters);
+void updateEfficiency();
 void updateChannel(lv_obj_t *channel, float voltage, float current);
 void disableChannel(lv_obj_t *channel, bool disable);
 

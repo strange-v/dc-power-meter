@@ -13,6 +13,6 @@ void taskRetrieveData(void *pvParameters)
 
         xEventGroupSetBits(eg, EVENT_UPDATE_DISPLAY);
 
-        delay(1000);
+        delay(500);
     }
 }

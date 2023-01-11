@@ -21,6 +21,7 @@ LGFX lcd;
 INA3221 ina(INA3221_ADDR40_GND);
 
 SensorData sensorData;
+DeviceMode deviceMode = DeviceMode::Standard;
 
 volatile int16_t encCounter = 0;
 int16_t encLastCounter = 0;
@@ -84,11 +85,10 @@ void setup(void)
   lv_indev_t *indev_enc = lv_indev_drv_register(&indev_drv);
 
   group = lv_group_create();
+  lv_group_set_default(group);
   lv_indev_set_group(indev_enc, group);
 
   ui_init();
-
-  lv_group_add_obj(group, ui_cbMode);
 
   xTaskCreatePinnedToCore(taskRetrieveData, "data", TaskStack15K, NULL, Priority5, NULL, Core1);
   xTaskCreatePinnedToCore(taskUpdateDisplay, "disp", TaskStack15K, NULL, Priority4, NULL, Core1);

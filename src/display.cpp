@@ -9,8 +9,51 @@ void taskUpdateDisplay(void *pvParameters)
 
         updateChannel(ui_Channel1, sensorData.ch1Voltage, sensorData.ch1Current);
         updateChannel(ui_Channel2, sensorData.ch2Voltage, sensorData.ch2Current);
-        updateChannel(ui_Channel3, sensorData.ch3Voltage, sensorData.ch3Current);
+        
+        if (deviceMode == DeviceMode::Standard)
+        {
+            updateChannel(ui_Channel3, sensorData.ch3Voltage, sensorData.ch3Current);
+        }
+        else 
+        {
+            updateEfficiency();
+        }
     }
+}
+
+void onModeChange(lv_event_t * e)
+{
+    if (lv_dropdown_get_selected(e->target) == 0)
+    {
+        lv_obj_clear_flag(ui_Channel3, LV_OBJ_FLAG_HIDDEN);
+        lv_obj_add_flag(ui_Efficiency, LV_OBJ_FLAG_HIDDEN);
+        deviceMode = DeviceMode::Standard;
+    }
+    else
+    {
+        lv_obj_add_flag(ui_Channel3, LV_OBJ_FLAG_HIDDEN);
+        lv_obj_clear_flag(ui_Efficiency, LV_OBJ_FLAG_HIDDEN);
+        deviceMode = DeviceMode::Efficiency;
+    }
+}
+
+void updateEfficiency()
+{
+    float efficiency = 0;
+    float power1 = sensorData.ch1Voltage * sensorData.ch1Current;
+    float power2 = sensorData.ch2Voltage * sensorData.ch2Current;
+    
+    if (power1 > 0 || power2 > 0)
+    {
+        float inputPower = power1 > power2 ? power1 : power2;
+        float outputPower = power1 < power2 ? power1 : power2;
+        efficiency = outputPower / inputPower * 100;
+    }
+
+    if (efficiency > 0)
+        lv_label_set_text_fmt(ui_EfficiencyValue, "%.1f", efficiency);
+    else
+        lv_label_set_text(ui_EfficiencyValue, "--");
 }
 
 void updateChannel(lv_obj_t *channel, float voltage, float current)

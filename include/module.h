@@ -16,4 +16,10 @@
 
 #define EVENT_UPDATE_DISPLAY (1 << 1)
 
+enum class DeviceMode
+{
+    Standard = 0,
+    Efficiency,
+};
+
 #endif
